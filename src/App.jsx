@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import getMovies from './requests/movies';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import CardsContainer from './components/CardsContainer';
 
 class App extends Component {
@@ -9,23 +11,29 @@ class App extends Component {
 		super();
 		this.state = {
 			languages: [],
-			geners: [],
-			events: {}
+			genres: [],
+			events: {},
+			isLoading: true
 		};
 	}
 
 	componentDidMount() {
 		getMovies()
 			.then((response) => {
-				console.log(response);
 				const languages = response[0] || [];
 				const events = response[1] || {};
-				// const geners = [];
-				let geners = Object.keys(events).map((eventId) => {
-					return events[eventId].EventGenre;
+				const isLoading = false;
+				let genres = Object.keys(events).map((eventId) => {
+					let genre = events[eventId].EventGenre;
+					if (genre.includes('|')) {
+						genre = genre.split('|');
+						return genre;
+					} else {
+						return genre;
+					}
 				});
-				geners = [...new Set(geners)];
-				this.setState({ languages, events, geners });
+				genres = [...new Set(genres)];
+				this.setState({ languages, events, genres, isLoading });
 			})
 			.catch((error) => {
 				console.error(`Error in App.componentDidMount.getMovies: ${error}`);
@@ -33,9 +41,13 @@ class App extends Component {
 	}
 
 	render() {
+		let { events, isLoading } = this.state;
+		if (!Object.keys(events).length && !isLoading) {
+			return <h1 className="center">No Data Available</h1>;
+		}
 		return (
-			<div className="App">
-				<CardsContainer events={this.state.events} />
+			<div className={`app ${isLoading ? 'center' : ''}`}>
+				{isLoading ? <CircularProgress color="primary" /> : <CardsContainer events={events} />}
 			</div>
 		);
 	}
