@@ -6,11 +6,13 @@ import Card from './Card';
 class CardContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			expandedCardId: ''
+		};
 	}
 
-	cardClickHandler = () => {
-		this.setState({ isExpanded: true });
+	cardClickHandler = (id) => {
+		this.setState({ expandedCardId: id });
 	};
 
 	render() {
@@ -19,7 +21,14 @@ class CardContainer extends Component {
 		return (
 			<div className="card-container">
 				{Object.keys(events).map((eventId) => {
-					return <Card key={eventId} event={events[eventId]} cardClickHandler={this.cardClickHandler} />;
+					return (
+						<Card
+							key={eventId}
+							event={events[eventId]}
+							cardClickHandler={this.cardClickHandler}
+							isExpanded={this.state.expandedCardId === eventId}
+						/>
+					);
 				})}
 			</div>
 		);

@@ -117,8 +117,7 @@ class CardExpandedView extends Component {
 }
 
 CardExpandedView.propTypes = {
-	event: PropTypes.object,
-	background: PropTypes.string
+	event: PropTypes.object
 };
 
 export default CardExpandedView;

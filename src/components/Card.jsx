@@ -27,25 +27,8 @@ class Card extends Component {
 		};
 	}
 
-	cardClickHandler = () => {
-		const previousElements = document.querySelectorAll('.expand-view');
-		const cards = document.querySelectorAll('.card');
-		if (cards && cards.length) {
-			for (let element of cards) {
-				element.style.height = '300px';
-			}
-		}
-		if (previousElements && previousElements.length) {
-			for (let element of previousElements) {
-				element.parentNode.removeChild(element);
-			}
-		}
-		this.setState({ isExpanded: true });
-	};
-
 	render() {
-		const { event } = this.props;
-		const { isExpanded } = this.state;
+		const { event, isExpanded } = this.props;
 		let { ShowDate } = event;
 		ShowDate = ShowDate.split(',');
 
@@ -55,12 +38,22 @@ class Card extends Component {
 				style={isExpanded ? this.styles.expandedHeight : this.styles.nonExpandedHeight}
 			>
 				<div className="release-date-wrapper">
-					<div className="release-date" onClick={this.cardClickHandler}>
+					<div
+						className="release-date"
+						onClick={(e) => {
+							this.props.cardClickHandler(event.EventCode);
+						}}
+					>
 						{ShowDate}
 					</div>
 				</div>
 				{!isExpanded && (
-					<div className="play-icon" onClick={this.cardClickHandler}>
+					<div
+						className="play-icon"
+						onClick={(e) => {
+							this.props.cardClickHandler(event.EventCode);
+						}}
+					>
 						<PlayIcon style={this.styles.playIcon} />
 					</div>
 				)}
@@ -69,14 +62,11 @@ class Card extends Component {
 					className={isExpanded ? 'img-border' : ''}
 					src={`https://in.bmscdn.com/events/moviecard/${event.EventCode}.jpg`}
 					alt="Event Thumbnail"
-					onClick={this.cardClickHandler}
+					onClick={(e) => {
+						this.props.cardClickHandler(event.EventCode);
+					}}
 				/>
-				{isExpanded && (
-					<CardExpandedView
-						event={event}
-						background={`https://in.bmscdn.com/events/moviecard/${event.EventCode}.jpg`}
-					/>
-				)}
+				{isExpanded && <CardExpandedView event={event} />}
 			</div>
 		);
 	}
@@ -84,7 +74,8 @@ class Card extends Component {
 
 Card.propTypes = {
 	event: PropTypes.object,
-	cardClickHandler: PropTypes.func
+	cardClickHandler: PropTypes.func,
+	isExpanded: PropTypes.bool
 };
 
 export default Card;
