@@ -8,9 +8,19 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.no-data-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	height: 100vh;
 }
 
 .pointer {
 	cursor: pointer;
+}
+
+.img-border {
+	border: 0.25rem solid green;
 }

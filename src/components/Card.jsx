@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// import { PlayIcon } from '@material-ui/icons/PlayCircleOutline';
+import PlayIcon from '@material-ui/icons/PlayCircleOutlineSharp';
 
 import CardExpandedView from './CardExpandedView';
 
@@ -18,6 +18,11 @@ class Card extends Component {
 			},
 			nonExpandedHeight: {
 				height: 'auto'
+			},
+			playIcon: {
+				fontSize: '4rem',
+				position: 'absolute',
+				color: 'green'
 			}
 		};
 	}
@@ -40,20 +45,33 @@ class Card extends Component {
 
 	render() {
 		const { event } = this.props;
+		const { isExpanded } = this.state;
+		let { ShowDate } = event;
+		ShowDate = ShowDate.split(',');
 
 		return (
 			<div
 				className="card pointer"
-				style={this.state.isExpanded ? this.styles.expandedHeight : this.styles.nonExpandedHeight}
+				style={isExpanded ? this.styles.expandedHeight : this.styles.nonExpandedHeight}
 			>
-				{/* <PlayIcon /> */}
+				<div className="release-date-wrapper">
+					<div className="release-date" onClick={this.cardClickHandler}>
+						{ShowDate}
+					</div>
+				</div>
+				{!isExpanded && (
+					<div className="play-icon" onClick={this.cardClickHandler}>
+						<PlayIcon style={this.styles.playIcon} />
+					</div>
+				)}
 				<img
 					key={event.EventCode}
+					className={isExpanded ? 'img-border' : ''}
 					src={`https://in.bmscdn.com/events/moviecard/${event.EventCode}.jpg`}
 					alt="Event Thumbnail"
 					onClick={this.cardClickHandler}
 				/>
-				{this.state.isExpanded && (
+				{isExpanded && (
 					<CardExpandedView
 						event={event}
 						background={`https://in.bmscdn.com/events/moviecard/${event.EventCode}.jpg`}

@@ -43,10 +43,10 @@ class App extends Component {
 	render() {
 		let { events, isLoading } = this.state;
 		if (!Object.keys(events).length && !isLoading) {
-			return <h1 className="center">No Data Available</h1>;
+			return <h1 className="no-data-center">No Data Available</h1>;
 		}
 		return (
-			<div className={`app ${isLoading ? 'center' : ''}`}>
+			<div className={`app ${isLoading ? 'no-data-center' : ''}`}>
 				{isLoading ? <CircularProgress color="primary" /> : <CardsContainer events={events} />}
 			</div>
 		);

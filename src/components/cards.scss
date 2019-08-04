@@ -8,6 +8,34 @@
 		margin: 1.25rem 0.75rem;
 		width: 232px;
 
+		.release-date-wrapper {
+			position: absolute;
+			height: 300px;
+			width: 232px;
+			display: flex;
+			justify-content: flex-end;
+
+			.release-date {
+				border-radius: 50%;
+				padding: 0.5rem;
+				background: green;
+				font-size: 0.625rem;
+				text-align: center;
+				height: 2rem;
+				width: 2rem;
+				margin: 0.5rem;
+			}
+		}
+
+		.play-icon {
+			position: absolute;
+			height: 300px;
+			width: 232px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
 		.expand-view {
 			display: flex;
 			width: 100vw;
