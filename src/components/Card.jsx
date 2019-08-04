@@ -14,7 +14,7 @@ class Card extends Component {
 
 		this.styles = {
 			expandedHeight: {
-				height: '850px'
+				height: '750px'
 			},
 			nonExpandedHeight: {
 				height: 'auto'
@@ -23,6 +23,18 @@ class Card extends Component {
 	}
 
 	cardClickHandler = () => {
+		const previousElements = document.querySelectorAll('.expand-view');
+		const cards = document.querySelectorAll('.card');
+		if (cards && cards.length) {
+			for (let element of cards) {
+				element.style.height = '300px';
+			}
+		}
+		if (previousElements && previousElements.length) {
+			for (let element of previousElements) {
+				element.parentNode.removeChild(element);
+			}
+		}
 		this.setState({ isExpanded: true });
 	};
 
@@ -31,7 +43,7 @@ class Card extends Component {
 
 		return (
 			<div
-				className="card"
+				className="card pointer"
 				style={this.state.isExpanded ? this.styles.expandedHeight : this.styles.nonExpandedHeight}
 			>
 				{/* <PlayIcon /> */}
@@ -41,14 +53,20 @@ class Card extends Component {
 					alt="Event Thumbnail"
 					onClick={this.cardClickHandler}
 				/>
-				{this.state.isExpanded && <CardExpandedView event={event} />}
+				{this.state.isExpanded && (
+					<CardExpandedView
+						event={event}
+						background={`https://in.bmscdn.com/events/moviecard/${event.EventCode}.jpg`}
+					/>
+				)}
 			</div>
 		);
 	}
 }
 
 Card.propTypes = {
-	event: PropTypes.object
+	event: PropTypes.object,
+	cardClickHandler: PropTypes.func
 };
 
 export default Card;

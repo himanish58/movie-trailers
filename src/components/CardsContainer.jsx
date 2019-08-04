@@ -9,13 +9,17 @@ class CardContainer extends Component {
 		this.state = {};
 	}
 
+	cardClickHandler = () => {
+		this.setState({ isExpanded: true });
+	};
+
 	render() {
 		let { events } = this.props;
 
 		return (
 			<div className="card-container">
 				{Object.keys(events).map((eventId) => {
-					return <Card key={eventId} event={events[eventId]} />;
+					return <Card key={eventId} event={events[eventId]} cardClickHandler={this.cardClickHandler} />;
 				})}
 			</div>
 		);
