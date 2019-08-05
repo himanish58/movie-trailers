@@ -99,7 +99,7 @@ class CardExpandedView extends Component {
 							<ThumbsUpDown style={this.styles.help} />
 							<div className="will-text">
 								<div>Maybe</div>
-								<div />({event.ratings.wtsCount})
+								<div />({event.ratings.maybe})
 							</div>
 						</div>
 						<div className="wont">

@@ -1,0 +1,25 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+.header {
+	padding: 1rem 2.75rem;
+	background: #000000;
+	position: sticky;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	display: flex;
+	box-sizing: border-box;
+
+	.title {
+		font-size: 2rem;
+		font-family: Lobster;
+		flex: 1;
+	}
+
+	.selects {
+		flex: 1;
+		display: flex;
+		justify-content: flex-end;
+	}
+}
