@@ -16,7 +16,7 @@ const MenuProps = {
 		style: {
 			maxHeight: 48 * 4.5 + 8,
 			width: 250,
-			color: 'green'
+			color: '#00a341'
 		}
 	}
 };
@@ -30,7 +30,7 @@ class Header extends Component {
 
 		this.styles = {
 			inputLabel: {
-				color: 'green',
+				color: '#00a341',
 				marginLeft: '1rem'
 			},
 			form: {
@@ -40,8 +40,8 @@ class Header extends Component {
 			},
 			button: {
 				width: '120px',
-				border: '1px solid green',
-				color: 'green'
+				border: '1px solid #00a341',
+				color: '#00a341'
 			},
 			chip: {
 				background: 'transparent',

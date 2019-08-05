@@ -60,7 +60,7 @@ class App extends Component {
 		let selectedEventsGenre = { ...events };
 
 		Object.keys(events).map((eventId) => {
-			if (selectedLanguages.length && !selectedLanguages.includes(selectedEventsLang[eventId].EventLanguage)) {
+			if (!selectedLanguages.includes(selectedEventsLang[eventId].EventLanguage)) {
 				delete selectedEventsLang[eventId];
 			}
 			if (selectedGenres.length && !this.checkGenre(selectedGenres, selectedEventsGenre[eventId].EventGenre)) {

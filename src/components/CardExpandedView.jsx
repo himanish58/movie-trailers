@@ -27,22 +27,22 @@ class CardExpandedView extends Component {
 			},
 			thumbsUp: {
 				fontSize: '2rem',
-				color: 'green',
-				border: '1px solid green',
+				color: '#00a341',
+				border: '1px solid #00a341',
 				padding: '0.75rem',
 				borderRadius: '50%'
 			},
 			help: {
 				fontSize: '2rem',
-				color: 'yellow',
-				border: '1px solid yellow',
+				color: '#f09800',
+				border: '1px solid #f09800',
 				padding: '0.75rem',
 				borderRadius: '50%'
 			},
 			thumbsDown: {
 				fontSize: '2rem',
-				color: 'red',
-				border: '1px solid red',
+				color: '#bd0300',
+				border: '1px solid #bd0300',
 				padding: '0.75rem',
 				borderRadius: '50%'
 			}

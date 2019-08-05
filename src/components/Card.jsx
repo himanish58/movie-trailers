@@ -22,7 +22,7 @@ class Card extends Component {
 			playIcon: {
 				fontSize: '4rem',
 				position: 'absolute',
-				color: 'green'
+				color: '#00a341'
 			}
 		};
 	}
@@ -39,7 +39,7 @@ class Card extends Component {
 			>
 				<div className="release-date-wrapper">
 					<div
-						className="release-date"
+						className="release-date pointer"
 						onClick={(e) => {
 							this.props.cardClickHandler(event.EventCode);
 						}}
@@ -49,7 +49,7 @@ class Card extends Component {
 				</div>
 				{!isExpanded && (
 					<div
-						className="play-icon"
+						className="play-icon pointer"
 						onClick={(e) => {
 							this.props.cardClickHandler(event.EventCode);
 						}}

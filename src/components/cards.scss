@@ -6,7 +6,7 @@
 
 	&::after {
 		content: '';
-		flex: 0 0 60%;
+		flex: auto;
 	}
 
 	.card {
@@ -23,12 +23,13 @@
 			.release-date {
 				border-radius: 50%;
 				padding: 0.5rem;
-				background: green;
+				background: #00a341;
 				font-size: 0.625rem;
 				text-align: center;
 				height: 2rem;
 				width: 2rem;
 				margin: 0.5rem;
+				font-weight: 500;
 			}
 		}
 
@@ -113,15 +114,15 @@
 					line-height: 1.25rem;
 
 					.will {
-						color: green;
+						color: #00a341;
 					}
 
 					.maybe {
-						color: yellow;
+						color: #f09800;
 					}
 
 					.wont {
-						color: red;
+						color: #bd0300;
 					}
 				}
 
