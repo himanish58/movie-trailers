@@ -8,6 +8,8 @@ import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import { withWidth } from '@material-ui/core';
 
 const MenuProps = {
 	PaperProps: {
@@ -35,6 +37,11 @@ class Header extends Component {
 				width: '12rem',
 				background: '#1a1a1a',
 				marginRight: '1rem'
+			},
+			button: {
+				width: '120px',
+				border: '1px solid green',
+				color: 'green'
 			}
 		};
 	}
@@ -88,6 +95,9 @@ class Header extends Component {
 							))}
 						</Select>
 					</FormControl>
+					<Button style={this.styles.button} onClick={this.props.clearClickHandler}>
+						Clear
+					</Button>
 				</div>
 			</div>
 		);
@@ -100,7 +110,8 @@ Header.propTypes = {
 	handleChangeLang: PropTypes.func,
 	handleChangeGenre: PropTypes.func,
 	selectedLanguages: PropTypes.array,
-	selectedGenres: PropTypes.array
+	selectedGenres: PropTypes.array,
+	clearClickHandler: PropTypes.func
 };
 
 export default Header;

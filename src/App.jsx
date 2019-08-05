@@ -85,6 +85,14 @@ class App extends Component {
 		});
 	};
 
+	clearClickHandler = () => {
+		let { selectedEvents, selectedLanguages, selectedGenres, events } = this.state;
+		selectedEvents = { ...events };
+		selectedLanguages = [];
+		selectedGenres = [];
+		this.setState({ selectedEvents, selectedLanguages, selectedGenres });
+	};
+
 	render() {
 		let { isLoading, languages, genres, selectedLanguages, selectedGenres, selectedEvents } = this.state;
 		return (
@@ -96,6 +104,7 @@ class App extends Component {
 					handleChangeGenre={this.handleChangeGenre}
 					selectedLanguages={selectedLanguages}
 					selectedGenres={selectedGenres}
+					clearClickHandler={this.clearClickHandler}
 				/>
 				{!Object.keys(selectedEvents).length && !isLoading ? (
 					<h1 className="no-data-center">No Data Available</h1>
