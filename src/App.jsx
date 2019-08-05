@@ -79,7 +79,6 @@ class App extends Component {
 	};
 
 	handleChangeGenre = (e) => {
-		console.log(e);
 		this.setState({ selectedGenres: e.target.value }, () => {
 			this.applyFilters();
 		});
@@ -91,6 +90,21 @@ class App extends Component {
 		selectedLanguages = [];
 		selectedGenres = [];
 		this.setState({ selectedEvents, selectedLanguages, selectedGenres });
+	};
+
+	deleteFilterClickHandler = (filter) => {
+		let { selectedLanguages, selectedGenres } = this.state;
+		if (selectedLanguages.includes(filter)) {
+			selectedLanguages.splice(selectedLanguages.indexOf(filter), 1);
+			this.setState({ selectedLanguages }, () => {
+				this.applyFilters();
+			});
+		} else {
+			selectedGenres.splice(selectedGenres.indexOf(filter), 1);
+			this.setState({ selectedGenres }, () => {
+				this.applyFilters();
+			});
+		}
 	};
 
 	render() {
@@ -105,6 +119,7 @@ class App extends Component {
 					selectedLanguages={selectedLanguages}
 					selectedGenres={selectedGenres}
 					clearClickHandler={this.clearClickHandler}
+					deleteFilterClickHandler={this.deleteFilterClickHandler}
 				/>
 				{!Object.keys(selectedEvents).length && !isLoading ? (
 					<h1 className="no-data-center">No Data Available</h1>
